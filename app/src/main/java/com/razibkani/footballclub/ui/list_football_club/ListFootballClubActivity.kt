@@ -6,12 +6,13 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import com.razibkani.footballclub.data.model.FootballClub
 import com.razibkani.footballclub.ui.base.BaseActivity
+import com.razibkani.footballclub.ui.detail_football_club.DetailFootballClubActivity
 import com.razibkani.footballclub.utils.OnItemClickListener
 import org.jetbrains.anko.frameLayout
 import org.jetbrains.anko.indeterminateProgressDialog
 import org.jetbrains.anko.matchParent
 import org.jetbrains.anko.recyclerview.v7.recyclerView
-import org.jetbrains.anko.toast
+import org.jetbrains.anko.startActivity
 
 class ListFootballClubActivity : BaseActivity(), ListFootballClubMvpView {
 
@@ -56,7 +57,7 @@ class ListFootballClubActivity : BaseActivity(), ListFootballClubMvpView {
         footballClubAdapter = ListFootballClubAdapter()
         footballClubAdapter.onItemClickListener = object : OnItemClickListener<FootballClub> {
             override fun onClick(item: FootballClub) {
-                toast(item.name)
+                startActivity<DetailFootballClubActivity>(DetailFootballClubActivity.ARG_FOOTBALL_CLUB to item)
             }
         }
     }

@@ -25,7 +25,7 @@ class ListFootballClubPresenter : BasePresenter<ListFootballClubMvpView>() {
 
             mvpView?.updateData(footballClubList)
             mvpView?.hideLoading()
-        }, 1000)
+        }, 500)
     }
 
     @SuppressLint("Recycle")
