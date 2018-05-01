@@ -1,16 +1,20 @@
 package com.razibkani.footballclub.ui.list_football_club
 
-import android.app.ProgressDialog
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.view.Gravity
+import android.view.View
+import android.widget.ProgressBar
 import com.razibkani.footballclub.data.model.FootballClub
 import com.razibkani.footballclub.ui.base.BaseActivity
 import com.razibkani.footballclub.ui.detail_football_club.DetailFootballClubActivity
 import com.razibkani.footballclub.utils.OnItemClickListener
+import com.razibkani.footballclub.utils.hide
+import com.razibkani.footballclub.utils.visible
 import org.jetbrains.anko.frameLayout
-import org.jetbrains.anko.indeterminateProgressDialog
 import org.jetbrains.anko.matchParent
+import org.jetbrains.anko.progressBar
 import org.jetbrains.anko.recyclerview.v7.recyclerView
 import org.jetbrains.anko.startActivity
 
@@ -20,7 +24,7 @@ class ListFootballClubActivity : BaseActivity(), ListFootballClubMvpView {
     lateinit var footballClubAdapter: ListFootballClubAdapter
 
     lateinit var footballClubRecyclerView: RecyclerView
-    lateinit var progressDialog: ProgressDialog
+    lateinit var progressBar: ProgressBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,11 +41,11 @@ class ListFootballClubActivity : BaseActivity(), ListFootballClubMvpView {
     }
 
     override fun showLoading() {
-        progressDialog.show()
+        progressBar.visible()
     }
 
     override fun hideLoading() {
-        progressDialog.dismiss()
+        progressBar.hide()
     }
 
     override fun updateData(footballClubList: List<FootballClub>) {
@@ -63,10 +67,15 @@ class ListFootballClubActivity : BaseActivity(), ListFootballClubMvpView {
     }
 
     private fun buildUI() {
-        progressDialog = indeterminateProgressDialog("Loading...")
-
         frameLayout {
             lparams(width = matchParent, height = matchParent)
+
+            progressBar = progressBar {
+                isIndeterminate = true
+                visibility = View.GONE
+            }.lparams {
+                gravity = Gravity.CENTER
+            }
 
             footballClubRecyclerView = recyclerView {
                 val orientation = LinearLayoutManager.VERTICAL
