@@ -12,7 +12,7 @@
         <item>Arsenal FC</item>
     </string-array>
 
-    <array name="club_image">
+    <integer-array name="club_image">
         <item>@drawable/img_barca</item>
         <item>@drawable/img_madrid</item>
         <item>@drawable/img_bayern</item>
@@ -21,9 +21,9 @@
         <item>@drawable/img_chelsea</item>
         <item>@drawable/img_acm</item>
         <item>@drawable/img_arsenal</item>
-    </array>
+    </integer-array>
 
-    <array name="club_description">
+    <string-array name="club_description">
         <item>Barcelona</item>
         <item>Real Madrid</item>
         <item>Bayern Munich</item>
@@ -32,6 +32,6 @@
         <item>Chelsea</item>
         <item>AC Milan</item>
         <item>Arsenal</item>
-    </array>
+    </string-array>
 
 </resources>
